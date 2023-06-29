@@ -50,20 +50,19 @@ h1
     width: 70%;
 }
 
-.grid
+#grid
 {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     box-sizing: border-box;
-    height: 560px;
-    width: 560px;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    height: 600px;
+    width: 600px;
 }
 
 .element
 {
-    box-sizing: border-box;
-    width: 16px;
-    height: 16px;
+    border: 1px solid black;
 }
 
 
