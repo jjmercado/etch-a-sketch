@@ -10,6 +10,7 @@ let colorPicker = document.getElementById("colorPicker");
 let colorPickerValue = "rgb(0, 0, 0)";
 let colorMode = document.getElementById("colorMode");
 let rainbowMode = document.getElementById("rainbowMode");
+let colorPickerContainer = document.getElementById("colorPickerContainer");
 
 let isRainbowMode = false;
 let isColorMode = false;
@@ -24,6 +25,7 @@ slider.max = "64";
 clearButton.addEventListener("click", CreateGrid);
 eraserButton.addEventListener("click", Eraser);
 colorPicker.addEventListener("change", ColorPicker);
+colorPickerContainer.addEventListener("change", ChangePickerBackgroundColor);
 colorMode.addEventListener("click", ColorPicker);
 rainbowMode.addEventListener("click", RainbowMode);
 
@@ -52,7 +54,12 @@ function SetElementColor(e)
     else if(isRainbowMode)
     {
         colorPickerValue = `rgb(${getRandomInt(255)},${getRandomInt(255)},${getRandomInt(255)})`;
-
+        colorPickerContainer.style.backgroundColor = colorPickerValue;
+        e.target.style.backgroundColor = colorPickerValue;
+    }
+    else if(isColorMode)
+    {
+        colorPickerContainer.style.backgroundColor = colorPickerValue;
         e.target.style.backgroundColor = colorPickerValue;
     }
     else
@@ -104,4 +111,9 @@ function RainbowMode()
 function getRandomInt(max) 
 {
     return Math.floor(Math.random() * max);
+}
+
+function ChangePickerBackgroundColor() 
+{
+    colorPickerContainer.style.backgroundColor = colorPickerValue;    
 }
