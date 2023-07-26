@@ -11,9 +11,11 @@ let colorPickerValue = "rgb(0, 0, 0)";
 let colorMode = document.getElementById("colorMode");
 let rainbowMode = document.getElementById("rainbowMode");
 let colorPickerContainer = document.getElementById("colorPickerContainer");
+let checkBox = document.getElementById("checkBox");
 
 let isRainbowMode = false;
 let isColorMode = false;
+let isGridActivated = false;
 
 document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false; 
@@ -28,6 +30,7 @@ colorPicker.addEventListener("change", ColorPicker);
 colorPickerContainer.addEventListener("change", ChangePickerBackgroundColor);
 colorMode.addEventListener("click", ColorPicker);
 rainbowMode.addEventListener("click", RainbowMode);
+checkBox.addEventListener("click", CheckBox);
 
 output.textContent = `${slider.value} x ${slider.value}`;
 
@@ -39,7 +42,7 @@ slider.oninput = () =>
     grid = document.getElementById("grid");
     grid.style.gridTemplateColumns = `repeat(${slider.value}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${slider.value}, 1fr)`;
-        
+
     CreateGrid();
 
     output.textContent = `${slider.value} x ${slider.value}`;
@@ -62,10 +65,6 @@ function SetElementColor(e)
         colorPickerContainer.style.backgroundColor = colorPickerValue;
         e.target.style.backgroundColor = colorPickerValue;
     }
-    else
-    {
-        e.target.style.backgroundColor = colorPickerValue;
-    }
 }
 
 function CreateGrid() 
@@ -80,7 +79,10 @@ function CreateGrid()
         for (let j = 0; j < slider.value; j++) 
         {
             div = document.createElement("div");
-            div.classList = "element";
+            if (isGridActivated) 
+            {
+                div.classList = "element";     
+            }
             div.addEventListener("mousedown", SetElementColor)
             div.addEventListener("mouseover", SetElementColor)
             grid.appendChild(div);   
@@ -116,4 +118,10 @@ function getRandomInt(max)
 function ChangePickerBackgroundColor() 
 {
     colorPickerContainer.style.backgroundColor = colorPickerValue;    
+}
+
+function CheckBox() 
+{
+    isGridActivated = !isGridActivated;   
+    CreateGrid();
 }
