@@ -101,14 +101,7 @@ function Eraser()
     eraserButton.style.backgroundColor = "rgb(193, 209, 193)";
     eraserButton.style.color = "black";
 
-    colorMode.style.backgroundColor = "rgb(85, 92, 85)";
-    colorMode.style.color = "white";
-
-    rainbowMode.style.backgroundColor = "rgb(85, 92, 85)";
-    rainbowMode.style.color = "white";
-
-    clearButton.style.backgroundColor = "rgb(85, 92, 85)";
-    clearButton.style.color = "white";
+    ChangeButtonColorOnClick(colorMode, rainbowMode, clearButton);
 }
 
 function ColorPicker() 
@@ -119,14 +112,7 @@ function ColorPicker()
     colorMode.style.backgroundColor = "rgb(193, 209, 193)";
     colorMode.style.color = "black";
 
-    eraserButton.style.backgroundColor = "rgb(85, 92, 85)";
-    eraserButton.style.color = "white";
-
-    rainbowMode.style.backgroundColor = "rgb(85, 92, 85)";
-    rainbowMode.style.color = "white";
-
-    clearButton.style.backgroundColor = "rgb(85, 92, 85)";
-    clearButton.style.color = "white";
+    ChangeButtonColorOnClick(eraserButton, rainbowMode, clearButton);
 }
 
 function RainbowMode() 
@@ -136,14 +122,7 @@ function RainbowMode()
     rainbowMode.style.backgroundColor = "rgb(193, 209, 193)";
     rainbowMode.style.color = "black";
 
-    colorMode.style.backgroundColor = "rgb(85, 92, 85)";
-    colorMode.style.color = "white";
-
-    eraserButton.style.backgroundColor = "rgb(85, 92, 85)";
-    eraserButton.style.color = "white";
-
-    clearButton.style.backgroundColor = "rgb(85, 92, 85)";
-    clearButton.style.color = "white";
+    ChangeButtonColorOnClick(colorMode, eraserButton, clearButton);
 }
 
 function getRandomInt(max) 
@@ -167,12 +146,16 @@ function ChangeButtonColor()
     clearButton.style.backgroundColor = "rgb(193, 209, 193)";
     clearButton.style.color = "black";
 
-    colorMode.style.backgroundColor = "rgb(85, 92, 85)";
-    colorMode.style.color = "white";
+    ChangeButtonColorOnClick(colorMode, eraserButton, rainbowMode);
+}
 
-    rainbowMode.style.backgroundColor = "rgb(85, 92, 85)";
-    rainbowMode.style.color = "white";
+function ChangeButtonColorOnClick(button1, button2, button3) 
+{
+    buttons = [button1, button2, button3]
 
-    eraserButton.style.backgroundColor = "rgb(85, 92, 85)";
-    eraserButton.style.color = "white";
+    buttons.forEach((button) =>
+    {    
+        button.style.backgroundColor = "rgb(85, 92, 85)";
+        button.style.color = "white";
+    }) 
 }
