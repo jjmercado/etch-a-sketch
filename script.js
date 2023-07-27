@@ -13,6 +13,8 @@ let rainbowMode = document.getElementById("rainbowMode");
 let colorPickerContainer = document.getElementById("colorPickerContainer");
 let checkBox = document.getElementById("checkBox");
 
+let buttons = [clearButton, eraserButton, colorMode, rainbowMode];
+
 let isRainbowMode = false;
 let isColorMode = false;
 let isGridActivated = false;
@@ -25,6 +27,7 @@ slider.value = "16";
 slider.max = "64";
 
 clearButton.addEventListener("click", CreateGrid);
+clearButton.addEventListener("click", ChangeButtonColor);
 eraserButton.addEventListener("click", Eraser);
 colorPicker.addEventListener("change", ColorPicker);
 colorPickerContainer.addEventListener("change", ChangePickerBackgroundColor);
@@ -95,6 +98,17 @@ function Eraser()
     colorPickerValue = "rgb(255,255,255)";
     isColorMode = false;
     isRainbowMode = false;
+    eraserButton.style.backgroundColor = "rgb(193, 209, 193)";
+    eraserButton.style.color = "black";
+
+    colorMode.style.backgroundColor = "rgb(85, 92, 85)";
+    colorMode.style.color = "white";
+
+    rainbowMode.style.backgroundColor = "rgb(85, 92, 85)";
+    rainbowMode.style.color = "white";
+
+    clearButton.style.backgroundColor = "rgb(85, 92, 85)";
+    clearButton.style.color = "white";
 }
 
 function ColorPicker() 
@@ -102,12 +116,34 @@ function ColorPicker()
     colorPickerValue = document.getElementById("colorPicker").value;
     isColorMode = true;
     isRainbowMode = false;
+    colorMode.style.backgroundColor = "rgb(193, 209, 193)";
+    colorMode.style.color = "black";
+
+    eraserButton.style.backgroundColor = "rgb(85, 92, 85)";
+    eraserButton.style.color = "white";
+
+    rainbowMode.style.backgroundColor = "rgb(85, 92, 85)";
+    rainbowMode.style.color = "white";
+
+    clearButton.style.backgroundColor = "rgb(85, 92, 85)";
+    clearButton.style.color = "white";
 }
 
 function RainbowMode() 
 {
     isRainbowMode = true;
     isColorMode = false;
+    rainbowMode.style.backgroundColor = "rgb(193, 209, 193)";
+    rainbowMode.style.color = "black";
+
+    colorMode.style.backgroundColor = "rgb(85, 92, 85)";
+    colorMode.style.color = "white";
+
+    eraserButton.style.backgroundColor = "rgb(85, 92, 85)";
+    eraserButton.style.color = "white";
+
+    clearButton.style.backgroundColor = "rgb(85, 92, 85)";
+    clearButton.style.color = "white";
 }
 
 function getRandomInt(max) 
@@ -124,4 +160,19 @@ function CheckBox()
 {
     isGridActivated = !isGridActivated;   
     CreateGrid();
+}
+
+function ChangeButtonColor() 
+{
+    clearButton.style.backgroundColor = "rgb(193, 209, 193)";
+    clearButton.style.color = "black";
+
+    colorMode.style.backgroundColor = "rgb(85, 92, 85)";
+    colorMode.style.color = "white";
+
+    rainbowMode.style.backgroundColor = "rgb(85, 92, 85)";
+    rainbowMode.style.color = "white";
+
+    eraserButton.style.backgroundColor = "rgb(85, 92, 85)";
+    eraserButton.style.color = "white";
 }
