@@ -13,10 +13,9 @@ let rainbowMode = document.getElementById("rainbowMode");
 let colorPickerContainer = document.getElementById("colorPickerContainer");
 let checkBox = document.getElementById("checkBox");
 
-let buttons = [clearButton, eraserButton, colorMode, rainbowMode];
-
 let isRainbowMode = false;
 let isColorMode = false;
+let isEraserMode = false;
 let isGridActivated = false;
 
 document.body.onmousedown = () => mouseDown = true;
@@ -68,6 +67,11 @@ function SetElementColor(e)
         colorPickerContainer.style.backgroundColor = colorPickerValue;
         e.target.style.backgroundColor = colorPickerValue;
     }
+    else if(isEraserMode)
+    {
+        colorPickerValue = "honeydew";
+        e.target.style.backgroundColor = colorPickerValue;
+    }
 }
 
 function CreateGrid() 
@@ -95,7 +99,7 @@ function CreateGrid()
 
 function Eraser() 
 {
-    colorPickerValue = "rgb(255,255,255)";
+    isEraserMode = true;
     isColorMode = false;
     isRainbowMode = false;
     eraserButton.style.backgroundColor = "rgb(193, 209, 193)";
@@ -109,6 +113,7 @@ function ColorPicker()
     colorPickerValue = document.getElementById("colorPicker").value;
     isColorMode = true;
     isRainbowMode = false;
+    isEraserMode = false;
     colorMode.style.backgroundColor = "rgb(193, 209, 193)";
     colorMode.style.color = "black";
 
@@ -119,6 +124,7 @@ function RainbowMode()
 {
     isRainbowMode = true;
     isColorMode = false;
+    isEraserMode = false;
     rainbowMode.style.backgroundColor = "rgb(193, 209, 193)";
     rainbowMode.style.color = "black";
 
